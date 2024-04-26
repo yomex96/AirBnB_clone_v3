@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Handles I/O, writing and reading, of JSON for storage of all class instances effectively
+Handles I/O, writing and reading, of JSON for storage of
+all class instances effectively
 """
 import json
 from models import base_model, amenity, city, place, review, state, user
@@ -43,30 +44,6 @@ class FileStorage:
         bm_id = "{}.{}".format(type(obj).__name__, obj.id)
         FileStorage.__objects[bm_id] = obj
 
-    def get(self, cls, id):
-        """
-        gets specific object
-        :param cls: class
-        :param id: id of instance
-        :return: object or None
-        """
-        all_class = self.all(cls)
-
-        for obj in all_class.values():
-            if id == str(obj.id):
-                return obj
-
-        return None
-
-    def count(self, cls=None):
-        """
-        count of instances
-        :param cls: class
-        :return: number of instances
-        """
-
-        return len(self.all(cls))
-
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
         fname = FileStorage.__file_path
@@ -83,7 +60,7 @@ class FileStorage:
         try:
             with open(fname, mode='r', encoding='utf-8') as f_io:
                 new_objs = json.load(f_io)
-        except:
+        except Exception:
             return
         for o_id, d in new_objs.items():
             k_cls = d['__class__']
@@ -108,3 +85,31 @@ class FileStorage:
             calls the reload() method for deserialization from JSON to objects
         """
         self.reload()
+
+    def get(self, cls, id):
+        """
+        Returns the object based on the class and its ID, or None if not found
+        """
+        if cls and id:
+            if cls in classes.values():
+                all_objects = self.all(cls)
+
+                for value in all_objects.values():
+                    if value.id == id:
+                        return value
+            return
+        return
+
+    def count(self, cls=None):
+        """
+        Counts the number of objects in storage.
+        """
+        if not cls:
+            inst_of_all_cls = self.all()
+            return len(inst_of_all_cls)
+
+        if not cls:
+            all_inst_of_prov_cls = self.all(cls)
+            return len(all_inst_of_prov_cls)
+        if cls not in classes.values():
+            return
