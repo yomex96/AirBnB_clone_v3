@@ -1,45 +1,34 @@
 #!/usr/bin/python3
 """
-app
+This is the app file, that manage with the blueprint
+all the route for the API
 """
 
-from flask import Flask, jsonify
-from flask_cors import CORS
-from os import getenv
-
-from api.v1.views import app_views
 from models import storage
-
+from api.v1.views import app_views
+from os import getenv
+from flask_cors import CORS
+from flasgger import Swagger
+from flask import Flask, jsonify
 
 app = Flask(__name__)
-
-CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
-
 app.register_blueprint(app_views)
+cors = CORS(app, resources={"/*": {"origins": "0.0.0.0"}})
+swagger = Swagger(app)
 
 
 @app.teardown_appcontext
-def teardown(exception):
-    """
-    teardown function
-    """
+def teardown_db(exception):
+    """closes the storage on teardown"""
     storage.close()
 
 
 @app.errorhandler(404)
-def handle_404(exception):
-    """
-    handles 404 error
-    :return: returns 404 json
-    """
-    data = {
-        "error": "Not found"
-    }
+def handler404(e):
+    return jsonify({"error": "Not found"}), 404
 
-    resp = jsonify(data)
-    resp.status_code = 404
 
-    return(resp)
-
-if __name__ == "__main__":
-    app.run(host=getenv("HBNB_API_HOST"), port=getenv("HBNB_API_PORT"))
+if __name__ == '__main__':
+    app.run(host=getenv('HBNB_API_HOST', '0.0.0.0'),
+            port=getenv('HBNB_API_PORT', '5000'),
+            threaded=True)
