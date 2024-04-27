@@ -42,4 +42,4 @@ def handle_404(exception):
     return(resp)
 
 if __name__ == "__main__":
-    app.run(getenv("HBNB_API_HOST"), getenv("HBNB_API_PORT"))
+    app.run(host=getenv("HBNB_API_HOST"), port=getenv("HBNB_API_PORT"))
