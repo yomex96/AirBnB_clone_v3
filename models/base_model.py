@@ -68,3 +68,11 @@ class BaseModel:
     def delete(self):
         """delete the current instance from the storage"""
         models.storage.delete(self)
+
+    def to_json(self):
+        """Returns a dictionary representation of the object."""
+        json_dict = {}
+        # Add object attributes to the dictionary
+        json_dict['id'] = self.id
+        # Add other attributes as needed
+        return json_dict

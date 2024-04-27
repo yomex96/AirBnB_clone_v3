@@ -108,8 +108,8 @@ class FileStorage:
             inst_of_all_cls = self.all()
             return len(inst_of_all_cls)
 
-        if not cls:
+        if cls in self.CNC.values():
             all_inst_of_prov_cls = self.all(cls)
             return len(all_inst_of_prov_cls)
-        if cls not in classes.values():
-            return
+
+        return

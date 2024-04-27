@@ -25,22 +25,22 @@ def status():
     return resp
 
 
-#@app_views.route("/stats", methods=['GET'], strict_slashes=False)
-#def stats():
+@app_views.route("/stats", methods=['GET'], strict_slashes=False)
+def stats():
     """
     stats of all objs route
     :return: json of all objs
     """
- #   data = {
-  #      "amenities": storage.count("Amenity"),
-   #     "cities": storage.count("City"),
-   #     "places": storage.count("Place"),
-    #    "reviews": storage.count("Review"),
-     #   "states": storage.count("State"),
-      #  "users": storage.count("User"),
-   # }
+    data = {
+        "amenities": storage.count("Amenity"),
+        "cities": storage.count("City"),
+        "places": storage.count("Place"),
+        "reviews": storage.count("Review"),
+        "states": storage.count("State"),
+        "users": storage.count("User"),
+    }
 
-    #resp = jsonify(data)
-    #resp.status_code = 200
+    resp = jsonify(data)
+    resp.status_code = 200
 
-    #return resp
+    return resp
