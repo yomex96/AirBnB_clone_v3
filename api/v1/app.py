@@ -17,7 +17,7 @@ cors = CORS(app, resources={r"/api/*": {"origins": "0.0.0.0"}})
 
 @app.teardown_appcontext
 def close_db(obj):
-    """ calls methods close() """
+    """ Calls the close() method of the storage engine """
     storage.close()
 
 
@@ -29,15 +29,15 @@ def page_not_found(error):
 
 app.config['SWAGGER'] = {
     'title': 'AirBnB clone - RESTful API',
-    'description': 'This is the api that was created for the hbnb restful api project,\
-    all the documentation will be shown below',
-    'uiversion': 3}
+    'description': 'This is the API that was created for the HBNB RESTful API project. All the documentation will be shown below.',
+    'uiversion': 3
+}
 
 Swagger(app)
 
 if __name__ == "__main__":
-
     host = getenv('HBNB_API_HOST', default='0.0.0.0')
-    port = getenv('HBNB_API_PORT', default=5000)
+    port = getenv('HBNB_API_PORT', default='5000')
 
-    app.run(host, int(port), threaded=True)
+    app.run(host=host, port=int(port), threaded=True)
+
