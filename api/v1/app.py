@@ -4,17 +4,17 @@ This is the app file, that manage with the blueprint
 all the route for the API
 """
 
-from models import storage
-from api.v1.views import app_views
+#from models import storage
+#from api.v1.views import app_views
 from os import getenv
 from flask_cors import CORS
 from flasgger import Swagger
 from flask import Flask, jsonify
 
 app = Flask(__name__)
-app.register_blueprint(app_views)
+#app.register_blueprint(app_views)
 cors = CORS(app, resources={"/*": {"origins": "0.0.0.0"}})
-swagger = Swagger(app)
+#swagger = Swagger(app)
 
 
 @app.teardown_appcontext
