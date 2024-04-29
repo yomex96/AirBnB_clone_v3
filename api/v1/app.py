@@ -5,13 +5,7 @@ app
 from os import getenv
 from flask import Flask
 
-#from flask_cors import CORS
-
-from api.v1.views import app_views
-from models import storage
-
-
-app = Flask(__name__)#from flask_cors import CORS
+from flask_cors import CORS
 
 from api.v1.views import app_views
 from models import storage
@@ -19,7 +13,14 @@ from models import storage
 
 app = Flask(__name__)
 
-#CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
+
+from api.v1.views import app_views
+from models import storage
+
+
+app = Flask(__name__)
+
+CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 app.register_blueprint(app_views)
 
