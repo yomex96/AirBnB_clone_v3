@@ -2,7 +2,7 @@
 """ console """
 
 import cmd
-from datetime import datetime
+# from datetime import datetime
 import models
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -140,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
                                 if args[2] in integers:
                                     try:
                                         args[3] = int(args[3])
-                                    excepti Exception:
+                                    except Exception:
                                         args[3] = 0
                                 elif args[2] in floats:
                                     try:

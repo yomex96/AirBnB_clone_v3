@@ -7,7 +7,7 @@ import json
 from models import base_model, amenity, city, place, review, state, user
 from datetime import datetime
 
-#New import
+# New import
 from models.engine.db_storage import classes
 
 strptime = datetime.strptime

@@ -32,7 +32,6 @@ def stats():
     :return: json of all objs
     """
 
-
     data = {
         "amenities": storage.count("Amenity"),
         "cities": storage.count("City"),
@@ -41,8 +40,8 @@ def stats():
         "states": storage.count("State"),
         "users": storage.count("User"),
     }
-    
+
     resp = jsonify(data)
     resp.status_code = 200
-    
+
     return resp
