@@ -7,21 +7,21 @@ from unittest.mock import patch
 from io import StringIO
 import pep8
 import pep8 as pycodestyle
-import os
-import json
+# import os
+# import json
 import console
-import tests
+# import tests
 import inspect
 import models
 from console import HBNBCommand
 from models.base_model import BaseModel
-from models.user import User
-from models.state import State
+# from models.user import User
+# from models.state import State
 from models.city import City
-from models.amenity import Amenity
-from models.place import Place
-from models.review import Review
-from models.engine.file_storage import FileStorage
+# from models.amenity import Amenity
+# from models.place import Place
+# from models.review import Review
+# from models.engine.file_storage import FileStorage
 from models.engine.db_storage import DBStorage
 Model = HBNBCommand
 City = HBNBCommand

@@ -3,20 +3,20 @@
 Contains the TestDBStorageDocs and TestDBStorage classes
 """
 
-from datetime import datetime
+# from datetime import datetime
 import inspect
 import models
 from models.engine import file_storage
 from models.engine import db_storage
 from models.amenity import Amenity
-from models.base_model import BaseModel
+# from models.base_model import BaseModel
 from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
-import MySQLdb
-import json
+# import MySQLdb
+# import json
 import os
 import pep8
 import unittest
@@ -83,13 +83,8 @@ class TestDbStorage(unittest.TestCase):
         cls.user.last_name = "321"
         cls.storage = FileStorage()
 
-    @classmethod
-    def td(self):
-        """testing"""
-        del cls.user
-
-    def remove(self):
-        """removin file.json"""
+    def tearDown(self):
+        """teardown method"""
         try:
             os.remove("file.json")
         except Exception:
