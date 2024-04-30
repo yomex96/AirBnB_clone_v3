@@ -107,7 +107,7 @@ class TestReview(unittest.TestCase):
         new_d = r.to_dict()
         self.assertEqual(type(new_d), dict)
         for attr in r.__dict__:
-            if attr is not "_sa_instance_state":
+            if attr != "_sa_instance_state":
                 with self.subTest(attr=attr):
                     self.assertTrue(attr in new_d)
         self.assertTrue("__class__" in new_d)

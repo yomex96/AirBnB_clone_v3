@@ -3,7 +3,7 @@
 Contains the TestAmenityDocs classes
 """
 
-from datetime import datetime
+# from datetime import datetime
 import inspect
 from models import amenity
 from models.base_model import BaseModel
@@ -80,7 +80,7 @@ class TestAmenity(unittest.TestCase):
                      "Testing FileStorage")
     def test_name_attr_db(self):
         """Test for DBStorage name attribute"""
-        amenity = Amenity()
+        # amenity = Amenity()
         self.assertTrue(hasattr(Amenity, "name"))
         self.assertIsInstance(Amenity.name, InstrumentedAttribute)
 
@@ -90,7 +90,7 @@ class TestAmenity(unittest.TestCase):
         new_d = am.to_dict()
         self.assertEqual(type(new_d), dict)
         for attr in am.__dict__:
-            if attr is not "_sa_instance_state":
+            if attr != "_sa_instance_state":
                 with self.subTest(attr=attr):
                     self.assertTrue(attr in new_d)
         self.assertTrue("__class__" in new_d)
