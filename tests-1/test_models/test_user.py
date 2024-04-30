@@ -3,7 +3,7 @@
 Contains the TestUserDocs classes
 """
 
-from datetime import datetime
+# from datetime import datetime
 import inspect
 import models
 from models import user

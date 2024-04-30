@@ -3,7 +3,7 @@
 Contains the TestPlaceDocs classes
 """
 
-from datetime import datetime
+# from datetime import datetime
 import inspect
 import models
 from models import place
@@ -85,7 +85,7 @@ class TestPlace(unittest.TestCase):
                      "Testing FileStorage")
     def test_city_id_attr_db(self):
         """Test Place has attr city_id, and it's an empty string"""
-        place = Place()
+        # place = Place()
         self.assertTrue(hasattr(Place, "city_id"))
         self.assertIsInstance(Place.city_id, InstrumentedAttribute)
 
@@ -93,7 +93,7 @@ class TestPlace(unittest.TestCase):
                      "Testing FileStorage")
     def test_user_id_attr_db(self):
         """Test Place has attr user_id, and it's an empty string"""
-        place = Place()
+        # place = Place()
         self.assertTrue(hasattr(Place, "user_id"))
         self.assertIsInstance(Place.user_id, InstrumentedAttribute)
 
@@ -112,7 +112,7 @@ class TestPlace(unittest.TestCase):
                      "Testing FileStorage")
     def test_name_attr_db(self):
         """Test Place has attr name, and it's an empty string"""
-        place = Place()
+        # place = Place()
         self.assertTrue(hasattr(Place, "name"))
         self.assertIsInstance(Place.name, InstrumentedAttribute)
 
@@ -131,7 +131,7 @@ class TestPlace(unittest.TestCase):
                      "Testing FileStorage")
     def test_description_attr_db(self):
         """Test Place has attr description, and it's an empty string"""
-        place = Place()
+        # place = Place()
         self.assertTrue(hasattr(Place, "description"))
         self.assertIsInstance(Place.description, InstrumentedAttribute)
 

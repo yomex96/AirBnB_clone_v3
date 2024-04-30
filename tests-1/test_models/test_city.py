@@ -3,7 +3,7 @@
 Contains the TestCityDocs classes
 """
 
-from datetime import datetime
+# from datetime import datetime
 import inspect
 from models import city
 from models.base_model import BaseModel
@@ -80,7 +80,7 @@ class TestCity(unittest.TestCase):
                      "Testing FileStorage")
     def test_name_attr_db(self):
         """Test for DBStorage name attribute"""
-        city = City()
+        # city = City()
         self.assertTrue(hasattr(City, "name"))
         self.assertIsInstance(City.name, InstrumentedAttribute)
 
@@ -96,7 +96,7 @@ class TestCity(unittest.TestCase):
                      "Testing FileStorage")
     def test_state_id_attr_db(self):
         """Test for DBStorage state_id attribute"""
-        city = City()
+        # city = City()
         self.assertTrue(hasattr(City, "state_id"))
         self.assertIsInstance(City.state_id, InstrumentedAttribute)
 
