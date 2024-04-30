@@ -3,19 +3,15 @@
 Contains the TestDBStorageDocs and TestDBStorage classes
 """
 
-from datetime import datetime
 import inspect
 import models
 from models.engine import db_storage
 from models.amenity import Amenity
-from models.base_model import BaseModel
 from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
-import json
-import os
 import pep8
 import unittest
 DBStorage = db_storage.DBStorage
@@ -78,20 +74,19 @@ class TestDBStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_all_no_class(self):
         """Test that all returns all rows when no class is passed"""
-        State_data = {"name": "Nairobi"}
-        new_state = State(**state _data)
+        state_data = {"name": "Nairobi"}
+        new_state = State(**state_data)
         models.storage.new(new_state)
         models.storage.save()
-
         session = models.storage._DBStorage__session
-        all_objects = session.query(State).al1()
+        all_objects = session.query(State).all()
 
         self.assertTrue(len(all_objects) > 0)
 
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_new(self):
         """test that new adds an object to the database"""
-        state_ data = {"name": "Lagos"}
+        state_data = {"name": "Lagos"}
         new_state = State(**state_data)
 
         models.storage.new(new_state)
@@ -107,7 +102,7 @@ class TestDBStorage(unittest.TestCase):
     def test_save(self):
         """Test that save properly saves objects to the db"""
         state_data = {"name": "cassablanca"}
-        new_state = State(**state _data)
+        new_state = State(**state_data)
 
         models.storage.new(new_state)
         models.storage.save()
@@ -148,7 +143,7 @@ class TestDBStorage(unittest.TestCase):
         """Test that count returns the right number of elements in the db"""
         storage = models.storage
         storage.reload()
-        state data = {"name": "Sudan"}
+        state_data = {"name": "Sudan"}
         state_instance = State(**state_data)
         storage.new(state_instance)
 

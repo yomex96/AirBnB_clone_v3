@@ -3,7 +3,6 @@
 Contains the TestFileStorageDocs classes
 """
 
-from datetime import datetime
 import inspect
 import models
 from models.engine import file_storage
@@ -15,7 +14,6 @@ from models.review import Review
 from models.state import State
 from models.user import User
 import json
-import os
 import pep8
 import unittest
 FileStorage = file_storage.FileStorage
@@ -142,7 +140,7 @@ class TestFileStorage(unittest.TestCase):
         """Test that count returns the right number of objects in file.json"""
         storage = FileStorage()
         storage.reload()
-        state data = {"name": "Sudan"}
+        state_data = {"name": "Sudan"}
         state_instance = State(**state_data)
         storage.new(state_instance)
 
