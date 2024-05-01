@@ -6,12 +6,10 @@ BaseModel Class of Models Module
 import os
 import json
 import models
-# from uuid import uuid4, UUID
-from uuid import uuid4
-import time
+from uuid import uuid4, UUID
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String, DateTime
+from sqlalchemy import Column, Integer, String, Float, DateTime
 
 storage_type = os.environ.get('HBNB_TYPE_STORAGE')
 
@@ -53,7 +51,7 @@ class BaseModel:
         try:
             obj_to_str = json.dumps(obj_v)
             return obj_to_str is not None and isinstance(obj_to_str, str)
-        except Exception:
+        except:
             return False
 
     def bm_update(self, name, value):
