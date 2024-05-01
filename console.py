@@ -2,7 +2,7 @@
 """ console """
 
 import cmd
-from datetime import datetime
+# from datetime import datetime
 import models
 from models.amenity import Amenity
 from models.base_model import BaseModel
