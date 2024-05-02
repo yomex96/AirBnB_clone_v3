@@ -6,11 +6,10 @@ BaseModel Class of Models Module
 import os
 import json
 import models
-# from uuid import uuid4, UUID
-from uuid import uuid4
+from uuid import uuid4, UUID
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String, DateTime
+from sqlalchemy import Column, Integer, String, Float, DateTime
 
 storage_type = os.environ.get('HBNB_TYPE_STORAGE')
 
@@ -86,12 +85,12 @@ class BaseModel:
         return bm_dict
 
     def __str__(self):
-        """returns string type representation of object instance"""
+        """returns a string type representation of object instance"""
         class_name = type(self).__name__
         return '[{}] ({}) {}'.format(class_name, self.id, self.__dict__)
 
     def delete(self):
         """
-            deletes current instance from storage
+            deletes the current instance from storage
         """
         self.delete()

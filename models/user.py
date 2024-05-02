@@ -5,7 +5,7 @@ User Class from Models Module
 import os
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, String
+from sqlalchemy import Column, Integer, String, Float
 from hashlib import md5
 storage_type = os.environ.get('HBNB_TYPE_STORAGE')
 
@@ -15,6 +15,7 @@ class User(BaseModel, Base):
     if storage_type == "db":
         __tablename__ = 'users'
         email = Column(String(128), nullable=False)
+        password = Column("password", String(128), nullable=False)
         first_name = Column(String(128), nullable=True)
         last_name = Column(String(128), nullable=True)
 
@@ -22,6 +23,7 @@ class User(BaseModel, Base):
         reviews = relationship('Review', backref='user', cascade='delete')
     else:
         email = ''
+        password = ''
         first_name = ''
         last_name = ''
 
